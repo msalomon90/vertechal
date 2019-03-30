@@ -1,0 +1,27 @@
+{
+  "name": "vertechal",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fitbit/sdk": "~3.1.0",
+    "@fitbit/sdk-cli": "^1.6.0"
+  },
+  "fitbit": {
+    "appUUID": "f392b590-7924-4d63-83ee-7312cc5655d4",
+    "appType": "clockface",
+    "appDisplayName": "Vertechal",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#ffffff",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "meson"
+    ],
+    "i18n": {},
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  }
+}
