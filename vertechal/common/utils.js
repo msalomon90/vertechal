@@ -1,6 +1,8 @@
 import document from "document";
 import { preferences } from "user-settings";
 import { battery } from "power";
+import { me as appbit } from "appbit";    // request permission for goals
+import { today, goals } from "user-activity";    // goals interface
 
 const time_label     = document.getElementById("time-text");
 const battery_bar    = document.getElementById("battery-bar");
@@ -31,18 +33,7 @@ export function updateTime(evt)
   let seconds = zeroPad(today.getSeconds());
   time_label.text = `${hours}:${mins}`;
 }
-function resetBatteryBlocks(block_qty)
-{
-  console.log("reset battery");
-  let battery_block;
-  console.log(block_qty);
-  
-  for(let i = block_qty; i < 10; i++)
-  {
-    battery_block = document.getElementById("battery-block-" + i);
-    battery_block.style.fill = "#a4bcc1";
-  }
-}
+
 // Inserts new battery block in correct location inside the battery bar
 function insertBatteryBlock(full_block_qty)
 {           
@@ -98,3 +89,17 @@ export function updateBattery()
   }
   
 }
+
+export function updateSteps()
+  {
+    if(appbit.permissions.granted("access_activity")) 
+    {
+        console.log("Updating steps bar...");
+        let bar_slice_height = 280 / goals.steps;                  // divided by 300 pixel height
+        let bar_height = today.adjusted.steps * bar_slice_height;  // number of steps by bar height
+console.log(bar_height);
+        let step_goal_bar = document.getElementById("step-bar");
+        step_goal_bar.height = bar_height;
+        step_goal_bar.y = 300 - bar_height;   
+     }
+  }
