@@ -63,4 +63,12 @@
   fill: #26c1a0;
 }
 
+#step-text {
+  x: 270;
+  y: 14;
+  font-family: Seville-Bold-Condensed;
+  font-size: 16;
+  fill: black;
+}
+
 
