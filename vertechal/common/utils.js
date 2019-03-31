@@ -100,8 +100,9 @@ export function updateSteps()
         let step_goal_bar = document.getElementById("step-bar");
 
         let step_label = document.getElementById("step-text");
-        let goal_text  = goals.step < 1000? goals.step: (goals.step/1000) + "k";
-        step_label.text = 
+        let goal_text  = goals.steps < 1000? goals.steps: (goals.steps/1000) + 'k';
+        console.log(goals.steps/1000);
+        step_label.text = goal_text;
 
         step_goal_bar.height = bar_height;
         step_goal_bar.y = 300 - bar_height;   
