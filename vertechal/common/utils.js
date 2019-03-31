@@ -97,8 +97,12 @@ export function updateSteps()
         console.log("Updating steps bar...");
         let bar_slice_height = 280 / goals.steps;                  // divided by 300 pixel height
         let bar_height = today.adjusted.steps * bar_slice_height;  // number of steps by bar height
-console.log(bar_height);
         let step_goal_bar = document.getElementById("step-bar");
+
+        let step_label = document.getElementById("step-text");
+        let goal_text  = goals.step < 1000? goals.step: (goals.step/1000) + "k";
+        step_label.text = 
+
         step_goal_bar.height = bar_height;
         step_goal_bar.y = 300 - bar_height;   
      }
