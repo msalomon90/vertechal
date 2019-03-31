@@ -12,6 +12,7 @@ clock.ontick = (evt) => util.updateTime(evt);
 display.onchange = function() {
     if (display.on) {
       util.updateBattery();  
+      util.updateSteps();
     } else {
       
     }
