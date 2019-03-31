@@ -48,19 +48,19 @@
 }
 
 #step-container {
-  x: 270;
+  x: 264;
   y: 0;
-  width: 10%;
+  width: 12%;
   height: 100%; 
-  fill: #26c1a0;
+  fill: #7ae6e8;
 }
 
 #step-bar {
-  x: 270;
-  y: 0;
-  width: 10%;
-  height: 50%; 
-  fill: #7ae6e8;
+  x: 264;
+  y: 300;
+  width: 12%;
+  height: 0; 
+  fill: #26c1a0;
 }
 
 
