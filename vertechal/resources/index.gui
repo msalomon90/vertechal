@@ -1,0 +1,23 @@
+<svg>
+  <gradientRect class="background">
+  <text id="time-text"/>
+    <rect id="battery-container">
+      <text id="battery-percentage" class="battery-percent"/>
+      <rect id="battery-block-0" class="battery-block"/>
+      <rect id="battery-block-1" class="battery-block"/>
+      <rect id="battery-block-2" class="battery-block"/>
+      <rect id="battery-block-3" class="battery-block"/>
+      <rect id="battery-block-4" class="battery-block"/>
+      <rect id="battery-block-5" class="battery-block"/>
+      <rect id="battery-block-6" class="battery-block"/>
+      <rect id="battery-block-7" class="battery-block"/>
+      <rect id="battery-block-8" class="battery-block"/>
+      <rect id="battery-block-9" class="battery-block"/>
+      <rect id="battery-block-10" class="battery-block"/>
+    </rect>
+    <rect id="step-container">
+      <rect id="step-bar"></rect>
+    </rect>
+  </gradientRect>
+  
+</svg>
