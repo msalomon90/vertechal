@@ -71,4 +71,12 @@
   fill: black;
 }
 
+#step-text-container {
+  x: 264;
+  y: 0;
+  width: 12%;
+  height:20;
+  fill: #00d793;
+}
+
 

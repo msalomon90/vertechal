@@ -16,7 +16,9 @@
       <rect id="battery-block-10" class="battery-block"/>
     </rect>
     <rect id="step-container">
-      <text id="step-text"/>
+      <rect id="step-text-container">
+        <text id="step-text"/>
+      </rect>
       <rect id="step-bar"></rect>
     </rect>
   </gradientRect>
