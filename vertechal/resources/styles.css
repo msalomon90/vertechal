@@ -14,11 +14,21 @@
 }
 
 #time-text {
-  font-size: 60;
+  font-size: 50;
   font-family: Colfax-Regular;
   text-length: 32;
-  text-anchor: middle;
-  x: 50%;
+  text-anchor: end;
+  x: 60%;
+  y: 50%+20;
+  fill: white;
+}
+
+#ampm-text {
+  font-size: 30;
+  font-family: Colfax-Regular;
+  text-length: 32;
+  text-anchor: start;
+  x: 60%;
   y: 50%+20;
   fill: white;
 }
