@@ -6,9 +6,35 @@ import { today, goals } from "user-activity";    // goals interface
 
 const time_label     = document.getElementById("time-text");
 const ampm_label     = document.getElementById("ampm-text");
+const date_label     = document.getElementById("date-text");
 const battery_bar    = document.getElementById("battery-bar");
 const percent_label  = document.getElementById("battery-percentage");
 //const battery_block = document.getElementById("battery-block-id");
+
+const months = [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AUG",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DEC"
+];
+
+const weekdays = [
+  "SUN",
+  "MON",
+  "TUE",
+  "WED",
+  "THU",
+  "FRI",
+  "SAT"
+];
 
 // Add zero in front of numbers < 10
 export function zeroPad(i) {
@@ -34,8 +60,12 @@ export function updateTime(evt)
   }
   let mins = zeroPad(today.getMinutes());
   let seconds = zeroPad(today.getSeconds());
+  let weekday = weekdays[today.getDay()];
+  let month   = months[today.getMonth()];
+  
   time_label.text = `${hours}:${mins}`;
   ampm_label.text = `${ampm}`;
+  date_label.text = `${weekday} ${month} ${today.getDate()}`
 }
 
 // Inserts new battery block in correct location inside the battery bar
