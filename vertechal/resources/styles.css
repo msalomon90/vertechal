@@ -4,12 +4,12 @@
   width: 100%;
   height: 100%;
   gradient-type: linear;
-  gradient-x1: 0;
+  gradient-x1: 100%;
   gradient-y1: 50;
   gradient-x2: 0;
-  gradient-y2: 100%-30;
-  gradient-color1: #0b99b6;
-  gradient-color2: #25d8fc;
+  gradient-y2: 100%;
+  gradient-color1: #1b2c40;
+  gradient-color2: #1b2c40;
   
 }
 
@@ -60,7 +60,7 @@
   y: 300;
   width: 12%;
   height: 0; 
-  fill: #034558;
+  fill: #fc6b3a;
 }
 
 #step-text {
@@ -76,7 +76,7 @@
   y: 0;
   width: 12%;
   height:20;
-  fill: #00d793;
+  fill: #b8fc68;
 }
 
 
