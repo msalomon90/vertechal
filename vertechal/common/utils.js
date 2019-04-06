@@ -5,6 +5,7 @@ import { me as appbit } from "appbit";    // request permission for goals
 import { today, goals } from "user-activity";    // goals interface
 
 const time_label     = document.getElementById("time-text");
+const ampm_label     = document.getElementById("ampm-text");
 const battery_bar    = document.getElementById("battery-bar");
 const percent_label  = document.getElementById("battery-percentage");
 //const battery_block = document.getElementById("battery-block-id");
@@ -33,7 +34,8 @@ export function updateTime(evt)
   }
   let mins = zeroPad(today.getMinutes());
   let seconds = zeroPad(today.getSeconds());
-  time_label.text = `${hours}:${mins} ${ampm}`;
+  time_label.text = `${hours}:${mins}`;
+  ampm_label.text = `${ampm}`;
 }
 
 // Inserts new battery block in correct location inside the battery bar
