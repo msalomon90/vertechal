@@ -22,16 +22,18 @@ export function updateTime(evt)
   
   let today = evt.date;
   let hours = today.getHours();
+  let ampm;
   if (preferences.clockDisplay === "12h") {
     // 12h format
     hours = hours % 12 || 12;
+    ampm = hours < 12? "am": "pm";
   } else {
     // 24h format
     hours = zeroPad(hours);
   }
   let mins = zeroPad(today.getMinutes());
   let seconds = zeroPad(today.getSeconds());
-  time_label.text = `${hours}:${mins}`;
+  time_label.text = `${hours}:${mins} ${ampm}`;
 }
 
 // Inserts new battery block in correct location inside the battery bar
