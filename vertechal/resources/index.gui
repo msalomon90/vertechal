@@ -2,6 +2,7 @@
   <gradientRect class="background"/>
   <text id="time-text"/>
   <text id="ampm-text"/>
+  <text id="date-text"/>
     <rect id="battery-container">
       <text id="battery-percentage" class="battery-percent"/>
       <rect id="battery-block-0" class="battery-block"/>
