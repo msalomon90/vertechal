@@ -50,10 +50,10 @@ export function updateTime(evt)
   let today = evt.date;
   let hours = today.getHours();
   let ampm;
+  ampm = hours < 12? "am": "pm";
   if (preferences.clockDisplay === "12h") {
     // 12h format
     hours = hours % 12 || 12;
-    ampm = hours < 12? "am": "pm";
   } else {
     // 24h format
     hours = zeroPad(hours);
