@@ -1,5 +1,5 @@
 <svg>
-  <gradientRect class="background">
+  <gradientRect class="background"/>
   <text id="time-text"/>
     <rect id="battery-container">
       <text id="battery-percentage" class="battery-percent"/>
@@ -21,6 +21,6 @@
       </rect>
       <rect id="step-bar"></rect>
     </rect>
-  </gradientRect>
+  
   
 </svg>
