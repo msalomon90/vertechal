@@ -19,7 +19,7 @@
   text-length: 32;
   text-anchor: end;
   x: 60%;
-  y: 50%+20;
+  y: 50%;
   fill: white;
 }
 
@@ -29,6 +29,16 @@
   text-length: 32;
   text-anchor: start;
   x: 60%;
+  y: 50%;
+  fill: white;
+}
+
+#date-text {
+  font-size: 20;
+  font-family: Colfax-Regular;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%+25;
   y: 50%+20;
   fill: white;
 }
@@ -70,7 +80,7 @@
   y: 300;
   width: 12%;
   height: 0; 
-  fill: #fc6b3a;
+  fill: #b8fc68;
 }
 
 #step-text {
@@ -86,7 +96,7 @@
   y: 0;
   width: 12%;
   height:20;
-  fill: #b8fc68;
+  fill: #fc6b3a;
 }
 
 
