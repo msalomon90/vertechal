@@ -129,15 +129,33 @@ export function updateSteps()
     if(appbit.permissions.granted("access_activity")) 
     {
         console.log("Updating steps bar...");
-        let bar_slice_height = 280 / goals.steps;                  // divided by 300 pixel height
-        let bar_height = today.adjusted.steps * bar_slice_height;  // number of steps by bar height
+
+        let bar_height = 0;               // number of steps by bar height
+        let bar_slice_height = 0          // divided by 300 pixel height
+        let goal_text = 0 
+        let STEP_TOTAL = today.adjusted.steps;
+        let STEP_GOAL = goals.steps;
+
+        // Adjust the step bar by step count increments
+        // ie. goal is 6k, but user reaches 7k, the bar will reset for another 6k with the
+        // new goal being 12k... Motivation :D
+        if(STEP_TOTAL <= STEP_GOAL)   
+        {
+          bar_slice_height = 280 / STEP_GOAL;                  
+          bar_height = STEP_TOTAL * bar_slice_height;  
+        }
+        else
+        {
+          bar_slice_height = 280 / (2 * STEP_GOAL);
+          bar_height = (STEP_TOTAL - STEP_GOAL) * bar_slice_height;
+          STEP_GOAL = 2 * STEP_GOAL;    // double the step goal :D
+        }// step goal ajustment
+
+        goal_text  = STEP_GOAL < 1000? STEP_GOAL: (STEP_GOAL/1000) + 'k';  // add k only steps > 1000
         let step_goal_bar = document.getElementById("step-bar");
-
         let step_label = document.getElementById("step-text");
-        let goal_text  = goals.steps < 1000? goals.steps: (goals.steps/1000) + 'k';
-        console.log(goals.steps/1000);
-        step_label.text = goal_text;
 
+        step_label.text = goal_text;
         step_goal_bar.height = bar_height;
         step_goal_bar.y = 300 - bar_height;   
      }
