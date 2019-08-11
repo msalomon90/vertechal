@@ -17,8 +17,8 @@
   font-size: 55;
   font-family: Colfax-Regular;
   text-length: 32;
-  text-anchor: start;
-  x: 24%-3;
+  text-anchor: end;
+  x: 63%-3; /*24%-3;*/
   y: 50%;
   fill: white;
 }
@@ -27,8 +27,8 @@
   font-size: 30;
   font-family: Colfax-Regular;
   text-length: 2;
-  text-anchor: end;
-  x: 76%+3;
+  text-anchor: start;
+  x: 65%-3; /*76%+3;*/
   y: 50%;
   fill: white;
 }
@@ -80,7 +80,7 @@
   y: 300;
   width: 12%;
   height: 0; 
-  fill: #f83478;
+  fill: #b8fc68;
 }
 
 #step-text {
@@ -96,7 +96,7 @@
   y: 0;
   width: 12%;
   height:20;
-  fill: #b8fc68;
+  fill: #f83478;
 }
 
 
