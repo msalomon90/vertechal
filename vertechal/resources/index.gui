@@ -1,7 +1,7 @@
 <svg>
   <gradientRect class="background"/>
-  <text id="time-text"/>
   <text id="ampm-text"/>
+  <text id="time-text"/>
   <text id="date-text"/>
     <rect id="battery-container">
       <text id="battery-percentage" class="battery-percent"/>
