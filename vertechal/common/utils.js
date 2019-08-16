@@ -50,13 +50,17 @@ export function updateTime(evt)
   let today = evt.date;
   let hours = today.getHours();
   let ampm;
-  ampm = hours < 12? "AM": "PM";
   if (preferences.clockDisplay === "12h") {
     // 12h format
     hours = hours % 12 || 12;
+    ampm = hours < 12? "AM": "PM";
   } else {
     // 24h format
     hours = zeroPad(hours);
+    time_label.x = 150;
+    date_label.x = 150;
+    time_label.textAnchor = "middle";
+    date_label.textAnchor = "middle";
   }
   let mins = zeroPad(today.getMinutes());
   let seconds = zeroPad(today.getSeconds());
@@ -64,7 +68,7 @@ export function updateTime(evt)
   let month   = months[today.getMonth()];
   
   time_label.text = `${hours}:${mins}`;
-  ampm_label.text = `${ampm}`;
+  ampm_label.text = (ampm)?`${ampm}`: "";
   date_label.text = `${weekday} ${month} ${today.getDate()}`
 }
 
