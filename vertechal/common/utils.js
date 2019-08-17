@@ -53,7 +53,7 @@ export function updateTime(evt)
   if (preferences.clockDisplay === "12h") {
     // 12h format
     hours = hours % 12 || 12;
-    ampm = hours < 12? "AM": "PM";
+    ampm = today.getHours() < 12? "AM": "PM";
   } else {
     // 24h format
     hours = zeroPad(hours);
