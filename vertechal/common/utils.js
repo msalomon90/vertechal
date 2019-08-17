@@ -47,61 +47,40 @@ export function zeroPad(i) {
 // Adjusts the alignment for specific times
 // this is done in order to keep the different font size for the time and ampm text
 function adjustTimeAlignment(hours, mins)
-{                
-  if(hours >= 1 && hours <=9)              // Hour is one digit
-  {
-    if(hours == 1 && mins == 11)           // center alignment for '1:11' 
-    { 
-      console.log("time is 1:11");
-      time_label.x = 90; 
-      ampm_label.x = 205;
-      ampm_label.textAnchor = "end";
-      time_label.textAnchor = "start";
-    }
-    else if(mins == 11)                   // center alignment for 'x:11'
-    {
-      console.log("time is x:11");
-      time_label.x = 88; 
-      ampm_label.x = 212;
-      ampm_label.textAnchor = "end";
-      time_label.textAnchor = "start";
-    }
-    else if(mins >= 10 && mins <= 19)      // center alignment for 'x:1x'
-    {
-      console.log("time is x:1x");
-      time_label.x = 82; 
-      ampm_label.x = 217;
-      ampm_label.textAnchor = "end";
-      time_label.textAnchor = "start";
-    }
-  }
-  else if(hours >= 10 && hours <= 12)      // Hour is 2 digit
-  {
-    if(hours == 11 || mins == 11)                         // center alignment for 'xx:11'
-    {
-      console.log("time is xx:11");
-      time_label.x = 75; 
-      ampm_label.x = 220;
-      ampm_label.textAnchor = "end";
-      time_label.textAnchor = "start";
-    }
-    else if(mins >= 10 && mins <= 19)      // center alignment for 'xx:1x'
-    {
-      console.log("time is xx:1x");
-      time_label.x = 68; 
-      ampm_label.x = 228;
-      ampm_label.textAnchor = "end";
-      time_label.textAnchor = "start";
-    }
-    else if(hours >= 10 && hours <= 12)    // center alignment for 'xx:xx'
-    {
-      console.log("time is xx:__");
-      time_label.x = 63; 
-      ampm_label.x = 238;
-      ampm_label.textAnchor = "end";
-      time_label.textAnchor = "start";
-    }
-  }
+{         
+  let digit_1_px = 12;
+
+  let h1_px = 0; // will usually be 0 except for 10, 11, 12 hrs
+  let h2_px = 27; // set to default number pixel amount
+  let m1_px = 27; // set to default number pixel amount
+  let m2_px = 27; // set to default number pixel amount
+
+  h1_px = (hours >= 10 && hours <= 12)? digit_1_px: h1_px;
+  h2_px = (hours == 1)? digit_1_px: h2_px; // pixel amount for hr 1
+  
+  let m1_num = Math.floor(((mins)/10) % 10);   // first digit of mins
+  let m2_num = Math.floor(((mins)/1) % 10);  // second digit of mins
+
+  m1_px = (m1_num == 1)? digit_1_px: m1_px;   //  pixel amount for min num 1
+  m2_px = (m2_num == 1)? digit_1_px: m2_px;   //  pixel amount for min num 1
+
+  console.log("h1:" + h1_px + " h2:" + h2_px + " m1:" + m1_px + " m2:" + m2_px);
+  let digit_space_amount = (h1_px == 0)? 3: 4;
+  let digit_space_px = 9 * digit_space_amount;
+  let ampm_space_px = 9;
+  let ampm_px = 39;
+  let time_text_total_px = digit_space_px + h1_px + h2_px + m1_px + m2_px + ampm_space_px + ampm_px;
+
+  console.log("time text total px: " + time_text_total_px);
+  let time_label_position = (300 - time_text_total_px) / 2;
+  let ampm_label_position =  time_label_position + time_text_total_px;
+
+  console.log("time label: " + time_label_position);
+  console.log("ampm label: " + ampm_label_position);
+  time_label.x = time_label_position;
+  ampm_label.x = ampm_label_position;
+  
+
 }
 
 export function updateTime(evt)
