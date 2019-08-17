@@ -127,7 +127,7 @@ export function updateTime(evt)
   let weekday = weekdays[today.getDay()];
   let month   = months[today.getMonth()];
   
-  time_label.text = "11:13"; //`${hours}:${mins}`;
+  time_label.text = `${hours}:${mins}`;
   ampm_label.text = (ampm)?`${ampm}`: "";
   date_label.text = `${weekday} ${month} ${today.getDate()}`
 }
