@@ -95,7 +95,12 @@
   y: 300;
   width: 12%;
   height: 0; 
-  fill:#f83478;
+  fill:#f44f3d; /*#f83478; */
+/* possible color choices hmm..
+ * #f95d09
+ * #e33d00;
+ * #fa4b0b
+ */
 }
 
 #step-text {
