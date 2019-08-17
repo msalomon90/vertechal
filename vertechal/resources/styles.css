@@ -17,9 +17,14 @@
   font-size: 55;
   font-family: Colfax-Regular;
   text-length: 32;
-  text-anchor: end;
-  x: 63%-3; /*24%-3;*/
+  text-anchor: start;
+  x: 74; /*24%-3;*/
   y: 50%;
+/*
+  text-anchor: end;
+  x: 63%-3; /*24%-3;
+  y: 50%;
+*/
   fill: white;
 }
 
@@ -27,9 +32,14 @@
   font-size: 30;
   font-family: Colfax-Regular;
   text-length: 2;
-  text-anchor: start;
-  x: 65%-3; /*76%+3;*/
+  text-anchor: end;
+  x: 226; /*76%+3;*/
   y: 50%;
+/*
+  text-anchor: start;
+  x: 65%-3; /*76%+3;*
+  y: 50%;
+*/
   fill: white;
 }
 
@@ -37,9 +47,14 @@
   font-size: 25;
   font-family: Colfax-Regular;
   text-length: 10;
+  text-anchor: middle;
+  x: 50%;
+  y: 50%+27;
+/*
   text-anchor: end;
   x: 76%+3;
   y: 50%+27;
+*/
   fill: white;
 }
 

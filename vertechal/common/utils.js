@@ -44,30 +44,90 @@ export function zeroPad(i) {
   return i;
 }
 
+// Adjusts the alignment for specific times
+// this is done in order to keep the different font size for the time and ampm text
+function adjustTimeAlignment(hours, mins)
+{
+  hours = 11; mins = 13;                   
+  if(hours >= 1 && hours <=9)              // Hour is one digit
+  {
+    if(hours == 1 && mins == 11)           // center alignment for '1:11' 
+    { 
+      console.log("time is 1:11");
+      time_label.x = 90; 
+      ampm_label.x = 205;
+      ampm_label.textAnchor = "end";
+      time_label.textAnchor = "start";
+    }
+    else if(mins == 11)                   // center alignment for 'x:11'
+    {
+      console.log("time is x:11");
+      time_label.x = 88; 
+      ampm_label.x = 212;
+      ampm_label.textAnchor = "end";
+      time_label.textAnchor = "start";
+    }
+    else if(mins >= 10 && mins <= 19)      // center alignment for 'x:1x'
+    {
+      console.log("time is x:1x");
+      time_label.x = 82; 
+      ampm_label.x = 217;
+      ampm_label.textAnchor = "end";
+      time_label.textAnchor = "start";
+    }
+  }
+  else if(hours >= 10 && hours <= 12)      // Hour is 2 digit
+  {
+    if(hours == 11 || mins == 11)                         // center alignment for 'xx:11'
+    {
+      console.log("time is xx:11");
+      time_label.x = 75; 
+      ampm_label.x = 220;
+      ampm_label.textAnchor = "end";
+      time_label.textAnchor = "start";
+    }
+    else if(mins >= 10 && mins <= 19)      // center alignment for 'xx:1x'
+    {
+      console.log("time is xx:1x");
+      time_label.x = 68; 
+      ampm_label.x = 228;
+      ampm_label.textAnchor = "end";
+      time_label.textAnchor = "start";
+    }
+    else if(hours >= 10 && hours <= 12)    // center alignment for 'xx:xx'
+    {
+      console.log("time is xx:__");
+      time_label.x = 63; 
+      ampm_label.x = 238;
+      ampm_label.textAnchor = "end";
+      time_label.textAnchor = "start";
+    }
+  }
+}
+
 export function updateTime(evt)
 {
-  
   let today = evt.date;
   let hours = today.getHours();
+  let mins = zeroPad(today.getMinutes());
   let ampm;
-  if (preferences.clockDisplay === "12h") {
-    // 12h format
+  if (preferences.clockDisplay === "12h") {       // 12hr format
+    
     hours = hours % 12 || 12;
     ampm = today.getHours() < 12? "AM": "PM";
-  } else {
-    // 24h format
+    adjustTimeAlignment(hours, mins);
+  } else {                                        // 24hr format
     hours = zeroPad(hours);
     time_label.x = 150;
     date_label.x = 150;
     time_label.textAnchor = "middle";
     date_label.textAnchor = "middle";
   }
-  let mins = zeroPad(today.getMinutes());
   let seconds = zeroPad(today.getSeconds());
   let weekday = weekdays[today.getDay()];
   let month   = months[today.getMonth()];
   
-  time_label.text = `${hours}:${mins}`;
+  time_label.text = "11:13"; //`${hours}:${mins}`;
   ampm_label.text = (ampm)?`${ampm}`: "";
   date_label.text = `${weekday} ${month} ${today.getDate()}`
 }
