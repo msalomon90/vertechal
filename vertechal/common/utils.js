@@ -47,8 +47,7 @@ export function zeroPad(i) {
 // Adjusts the alignment for specific times
 // this is done in order to keep the different font size for the time and ampm text
 function adjustTimeAlignment(hours, mins)
-{
-  hours = 11; mins = 13;                   
+{                
   if(hours >= 1 && hours <=9)              // Hour is one digit
   {
     if(hours == 1 && mins == 11)           // center alignment for '1:11' 
