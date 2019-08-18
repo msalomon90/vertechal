@@ -44,25 +44,66 @@ export function zeroPad(i) {
   return i;
 }
 
+/* Center aligns the time and ampm text
+ * The alignment is based on the total pixel count of each digit and space of 'xx:xx am' text
+ * Digit '1' has a lower pixel count of 12px, while all other numbers are defaulted to 27px */
+function adjustTimeAlignment(hours, mins)
+{         
+  let digit_1_px = 12;                          // pixel amount of digit '1' 
+  let digit_default_px = 27;                    // default pixel amount of digits 2..9
+
+  /* set default values to each digit of xx:xx format */
+  let h1_px = 0;                                // 1st digit (usually 0 except for hours 10, 11, and 12)
+  let h2_px = digit_default_px;   
+  let m1_px = digit_default_px;   
+  let m2_px = digit_default_px;   
+
+  h1_px = (hours >= 10 && hours <= 12)? digit_1_px: h1_px;    // 1st digit is '1' if hour is 2 digits
+  h2_px = (hours == 1)? digit_1_px: h2_px;                    // 2nd digit is '1' (hour is 1 digit only) 
+  
+  /* get 1st and 2nd digits of mins */
+  let m1_digit = Math.floor(((mins)/10) % 10);  // math is cool!
+  let m2_digit = Math.floor(((mins)/1) % 10);     
+
+  /* check to see if one of the min digits is a '1' */
+  m1_px = (m1_digit == 1)? digit_1_px: m1_px;    
+  m2_px = (m2_digit == 1)? digit_1_px: m2_px;     
+
+  let digit_space_count = (h1_px == 0)? 3: 4;   // spaces in between 'xx:xx am' text based on hour digits 
+  let digit_space_px = 9 * digit_space_count;   // space pixel = 9, multiplied by how many spaces needed
+  let ampm_space_px = 9;                        // space between xx:xx and 'am' 
+  let ampm_px = 39;                             // pixel amount for 'am/pm' text
+
+  /* calculates the entire pixel amount for the time and ampm label (including spaces) */
+  let time_text_total_px = digit_space_px + h1_px + h2_px + m1_px + m2_px + ampm_space_px + ampm_px;
+
+  /* calculates the time and ampm label positions based on the total pixel count (see css for alignment anchor info) */
+  let time_label_position = (300 - time_text_total_px) / 2;             // centers based on 300px span of versa display
+  let ampm_label_position =  time_label_position + time_text_total_px;  
+
+  /* set x coordinates of time and ampm labels, noice */
+  time_label.x = time_label_position;   
+  ampm_label.x = ampm_label_position;
+}
+
 export function updateTime(evt)
 {
-  
   let today = evt.date;
   let hours = today.getHours();
+  let mins = zeroPad(today.getMinutes());
   let ampm;
-  if (preferences.clockDisplay === "12h") {
-    // 12h format
+  if (preferences.clockDisplay === "12h") {       // 12hr format
+    
     hours = hours % 12 || 12;
-    ampm = hours < 12? "AM": "PM";
-  } else {
-    // 24h format
+    ampm = today.getHours() < 12? "AM": "PM";
+    adjustTimeAlignment(hours, mins);
+  } else {                                        // 24hr format
     hours = zeroPad(hours);
     time_label.x = 150;
     date_label.x = 150;
     time_label.textAnchor = "middle";
     date_label.textAnchor = "middle";
   }
-  let mins = zeroPad(today.getMinutes());
   let seconds = zeroPad(today.getSeconds());
   let weekday = weekdays[today.getDay()];
   let month   = months[today.getMonth()];
