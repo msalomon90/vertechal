@@ -58,11 +58,16 @@ function adjustTimeAlignment(hours, mins)
   let m1_px = digit_default_px;   
   let m2_px = digit_default_px;   
 
-  h1_px = (hours >= 10 && hours <= 12)? digit_1_px: h1_px;    // 1st digit is '1' if hour is 2 digits
-  h2_px = (hours == 1)? digit_1_px: h2_px;                    // 2nd digit is '1' (hour is 1 digit only) 
-  
+  /* get 1st and 2nd digits of hours */
+  let h1_digit = Math.floor(((hours)/10) % 10);  // math is cool!
+  let h2_digit = Math.floor(((hours)/1) % 10);
+
+  /* check to see if one of the hour digits is a '1' */
+  h1_px = (h1_digit == 1)? digit_1_px: m1_px;
+  h2_px = (h2_digit == 1)? digit_1_px: m2_px;
+
   /* get 1st and 2nd digits of mins */
-  let m1_digit = Math.floor(((mins)/10) % 10);  // math is cool!
+  let m1_digit = Math.floor(((mins)/10) % 10);  
   let m2_digit = Math.floor(((mins)/1) % 10);     
 
   /* check to see if one of the min digits is a '1' */
