@@ -117,7 +117,7 @@ export function updateTime(evt)
 function insertBatteryBlock(full_block_qty)
 {           
   let total_battery_blocks   = 10;  // each block is 10%
-  let active_block_opacity   = 10;
+  let active_block_opacity   = 1;
   let inactive_block_opacity = 0.3;
   
   let block_start_y = 272;        // starting y coordinate of blocks (in pixels)
@@ -164,7 +164,7 @@ export function updateBattery()
     
     battery_block.height = small_block;
     battery_block.y = max_y - ((full_block_qty * block_size) + block_gap + small_block);   // location of overflow block   
-    battery_block.style.opacity = 10;  
+    battery_block.style.opacity = 1;  
   }
   
 }
