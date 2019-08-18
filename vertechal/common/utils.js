@@ -44,43 +44,46 @@ export function zeroPad(i) {
   return i;
 }
 
-// Adjusts the alignment for specific times
-// this is done in order to keep the different font size for the time and ampm text
+/* Center aligns the time and ampm text
+ * The alignment is based on the total pixel count of each digit and space of 'xx:xx am' text
+ * Digit '1' has a lower pixel count of 12px, while all other numbers are defaulted to 27px */
 function adjustTimeAlignment(hours, mins)
 {         
-  let digit_1_px = 12;
+  let digit_1_px = 12;                          // pixel amount of digit '1' 
+  let digit_default_px = 27;                    // default pixel amount of digits 2..9
 
-  let h1_px = 0; // will usually be 0 except for 10, 11, 12 hrs
-  let h2_px = 27; // set to default number pixel amount
-  let m1_px = 27; // set to default number pixel amount
-  let m2_px = 27; // set to default number pixel amount
+  /* set default values to each digit of xx:xx format */
+  let h1_px = 0;                                // 1st digit (usually 0 except for hours 10, 11, and 12)
+  let h2_px = digit_default_px;   
+  let m1_px = digit_default_px;   
+  let m2_px = digit_default_px;   
 
-  h1_px = (hours >= 10 && hours <= 12)? digit_1_px: h1_px;
-  h2_px = (hours == 1)? digit_1_px: h2_px; // pixel amount for hr 1
+  h1_px = (hours >= 10 && hours <= 12)? digit_1_px: h1_px;    // 1st digit is '1' if hour is 2 digits
+  h2_px = (hours == 1)? digit_1_px: h2_px;                    // 2nd digit is '1' (hour is 1 digit only) 
   
-  let m1_num = Math.floor(((mins)/10) % 10);   // first digit of mins
-  let m2_num = Math.floor(((mins)/1) % 10);  // second digit of mins
+  /* get 1st and 2nd digits of mins */
+  let m1_digit = Math.floor(((mins)/10) % 10);  // math is cool!
+  let m2_digit = Math.floor(((mins)/1) % 10);     
 
-  m1_px = (m1_num == 1)? digit_1_px: m1_px;   //  pixel amount for min num 1
-  m2_px = (m2_num == 1)? digit_1_px: m2_px;   //  pixel amount for min num 1
+  /* check to see if one of the min digits is a '1' */
+  m1_px = (m1_digit == 1)? digit_1_px: m1_px;    
+  m2_px = (m2_digit == 1)? digit_1_px: m2_px;     
 
-  console.log("h1:" + h1_px + " h2:" + h2_px + " m1:" + m1_px + " m2:" + m2_px);
-  let digit_space_amount = (h1_px == 0)? 3: 4;
-  let digit_space_px = 9 * digit_space_amount;
-  let ampm_space_px = 9;
-  let ampm_px = 39;
+  let digit_space_count = (h1_px == 0)? 3: 4;   // spaces in between 'xx:xx am' text based on hour digits 
+  let digit_space_px = 9 * digit_space_count;   // space pixel = 9, multiplied by how many spaces needed
+  let ampm_space_px = 9;                        // space between xx:xx and 'am' 
+  let ampm_px = 39;                             // pixel amount for 'am/pm' text
+
+  /* calculates the entire pixel amount for the time and ampm label (including spaces) */
   let time_text_total_px = digit_space_px + h1_px + h2_px + m1_px + m2_px + ampm_space_px + ampm_px;
 
-  console.log("time text total px: " + time_text_total_px);
-  let time_label_position = (300 - time_text_total_px) / 2;
-  let ampm_label_position =  time_label_position + time_text_total_px;
+  /* calculates the time and ampm label positions based on the total pixel count (see css for alignment anchor info) */
+  let time_label_position = (300 - time_text_total_px) / 2;             // centers based on 300px span of versa display
+  let ampm_label_position =  time_label_position + time_text_total_px;  
 
-  console.log("time label: " + time_label_position);
-  console.log("ampm label: " + ampm_label_position);
-  time_label.x = time_label_position;
+  /* set x coordinates of time and ampm labels, noice */
+  time_label.x = time_label_position;   
   ampm_label.x = ampm_label_position;
-  
-
 }
 
 export function updateTime(evt)
