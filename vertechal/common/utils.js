@@ -80,7 +80,6 @@ function alignTimeText(hours, mins)
   let ampm_space_px = 9;                        // space between xx:xx and 'am' 
   let ampm_px = 39;                             // pixel amount for 'am/pm' text
 
-  console.log(h1_digit + " " + h2_px + " " + m1_px + " " + m2_px);
   /* calculates the entire pixel amount for the time and ampm label (including spaces) */
   let time_text_total_px = digit_space_px + h1_px + h2_px + m1_px + m2_px + ampm_space_px + ampm_px;
 
