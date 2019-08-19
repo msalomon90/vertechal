@@ -64,8 +64,8 @@ function alignTimeText(hours, mins)
   let h2_digit = Math.floor(((hours)/1) % 10);
 
   /* check to see if one of the hour digits is a '1' */
-  h1_px = (h1_digit == 1)? digit_1_px: m1_px;
-  h2_px = (h2_digit == 1)? digit_1_px: m2_px;
+  h1_px = (h1_digit == 1)? digit_1_px: h1_px;
+  h2_px = (h2_digit == 1)? digit_1_px: h2_px;
 
   /* get 1st and 2nd digits of mins */
   let m1_digit = Math.floor(((mins)/10) % 10);  
@@ -80,6 +80,7 @@ function alignTimeText(hours, mins)
   let ampm_space_px = 9;                        // space between xx:xx and 'am' 
   let ampm_px = 39;                             // pixel amount for 'am/pm' text
 
+  console.log(h1_digit + " " + h2_px + " " + m1_px + " " + m2_px);
   /* calculates the entire pixel amount for the time and ampm label (including spaces) */
   let time_text_total_px = digit_space_px + h1_px + h2_px + m1_px + m2_px + ampm_space_px + ampm_px;
 
@@ -158,7 +159,7 @@ export function updateBattery()
   let remainder        = percentage % 10;                 // used for blocks less than 10% increments
   let full_block_qty   = (percentage - remainder) / 10;   // number of full blocks (current battery)
   
-  percent_label.text = percentage + '%';               
+  percent_label.text = percentage + '%';                
   insertBatteryBlock(full_block_qty);                  // display full blocks
   
   /* insert a small block (percentage % 10 != 0), not a full 10% */
