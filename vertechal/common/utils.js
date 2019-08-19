@@ -64,8 +64,8 @@ function alignTimeText(hours, mins)
   let h2_digit = Math.floor(((hours)/1) % 10);
 
   /* check to see if one of the hour digits is a '1' */
-  h1_px = (h1_digit == 1)? digit_1_px: m1_px;
-  h2_px = (h2_digit == 1)? digit_1_px: m2_px;
+  h1_px = (h1_digit == 1)? digit_1_px: h1_px;
+  h2_px = (h2_digit == 1)? digit_1_px: h2_px;
 
   /* get 1st and 2nd digits of mins */
   let m1_digit = Math.floor(((mins)/10) % 10);  
