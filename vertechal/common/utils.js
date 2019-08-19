@@ -158,7 +158,8 @@ export function updateBattery()
   let remainder        = percentage % 10;                 // used for blocks less than 10% increments
   let full_block_qty   = (percentage - remainder) / 10;   // number of full blocks (current battery)
   
-  percent_label.text = percentage + '%';                
+  if(percentage == 100){percent_label.style.fontSize = 14;}
+  percent_label.text = percentage + '%';               
   insertBatteryBlock(full_block_qty);                  // display full blocks
   
   /* insert a small block (percentage % 10 != 0), not a full 10% */
