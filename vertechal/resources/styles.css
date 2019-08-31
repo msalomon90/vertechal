@@ -8,7 +8,7 @@
   gradient-y1: 50;
   gradient-x2: 0;
   gradient-y2: 100%;
-  gradient-color1: #1b2c40;
+  gradient-color1: #1b2c40; /*1b2c40*/
   gradient-color2: #1b2c40;
   
 }
@@ -63,7 +63,7 @@
   y: 0;
   width: 12%;
   height: 100%; 
-  fill: #5ed2e4; 
+  fill: #7fdbe9; /*5ed2e4*/
 }
 
 .battery-block {
@@ -71,7 +71,7 @@
   y: 300;
   width: 28;
   height: 25;
-  fill: #135a7e;
+  fill: #06728f;
   /* #06728f;
    * #1e6588
    */
@@ -91,7 +91,7 @@
   y: 0;
   width: 12%;
   height: 100%; 
-  fill: #5ed2e4;
+  fill: #7fdbe9; /*5ed2e4*/
 }
 
 #step-bar {
@@ -99,12 +99,13 @@
   y: 300;
   width: 12%;
   height: 0; 
-  fill:#135a7e; /*#f83478; */
+  fill:#dc2b5a; /*#f83478; */
 /* possible color choices hmm..
  * #f95d09
  * b81c41
  * 2e6e8e
  * 9b2440
+ * dc2b5a
  */
 }
 
@@ -121,7 +122,7 @@
   y: 0;
   width: 12%;
   height:20;
-  fill: #b8fc68;
+  fill: #c2fe7e; /*b8fc68*/
 }
 
 
