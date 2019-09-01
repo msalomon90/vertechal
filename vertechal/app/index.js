@@ -9,11 +9,11 @@ clock.granularity = "minutes";
 
 // Update the <text> element every tick with the current time
 clock.ontick = (evt) => {
-  if (display.on) {
+  //if (display.on) {
     util.updateTime(evt);
     util.updateBattery();  
     util.updateSteps();
-  }
+  //}
 };
 
 
